@@ -15,8 +15,23 @@ function insertResolution(data){
   return db('resolutions').insert(data).returning('*')
 }
 
+function updateStreak(data){
+  return db('resolutions').where('id', data.id).update('streak', data.streak);
+}
+
+function startOver(data){
+  return db('resolutions').where('id', data.id).update('streak', data.streak);
+}
+
+function deleteResolution(data){
+    return db('resolutions').where('id', data.id).delete()
+}
+
 module.exports = {
   getResolutions,
   checkLogin,
   insertResolution,
+  updateStreak,
+  startOver,
+  deleteResolution,
 };

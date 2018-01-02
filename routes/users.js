@@ -21,4 +21,25 @@ router.post('/:id/new', (req,res,next) => {
   })
 })
 
+router.post('/:id/increment', (req,res,next) => {
+  db.updateStreak(req.body)
+  .then( data => {
+    res.redirect('/users/' + req.params.id)
+  })
+})
+
+router.post('/:id/startOver', (req,res,next) => {
+  db.startOver(req.body)
+  .then( data => {
+    res.redirect('/users/' + req.params.id)
+  })
+})
+
+router.post('/:id/delete', (req,res,next) => {
+  db.deleteResolution(req.body)
+  .then( data => {
+    res.redirect('/users/' + req.params.id)
+  })
+})
+
 module.exports = router;
