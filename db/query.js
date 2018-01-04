@@ -8,7 +8,7 @@ function checkLogin(user, pass) {
 }
 
 function getResolutions(user){
-  return db('resolutions').where('user_id', user);
+  return db('resolutions').where('user_id', user).orderBy('resolution', 'desc');
 }
 
 function insertResolution(data){
